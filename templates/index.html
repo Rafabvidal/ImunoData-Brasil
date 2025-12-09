@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Painel de Monitoramento Vacinal</title>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page">
+
+        <!-- HEADER / TOPO -->
+        <header class="header">
+            <div class="header-main">
+                <div>
+                    <h1>Painel de Monitoramento Vacinal</h1>
+                    <p class="header-date">
+                        <span class="icon-calendar"></span>
+                        Dados de 1994 a 2022
+                    </p>
+                </div>
+
+                <nav class="header-nav">
+                    <a href="#dashboard" class="nav-link nav-link-active">Dashboard</a>
+                    <a href="#analises" class="nav-link">Análises</a>
+                </nav>
+            </div>
+
+            <p class="header-subtitle">
+                Fonte dos dados: PNI – Programa Nacional de Imunizações (DATASUS). 
+                Abrange todas as Unidades Federativas do Brasil, agregadas por região e tipo
+                de vacina, para o período de 1994 a 2022. Os indicadores de cobertura utilizam
+                a metodologia oficial do Ministério da Saúde.
+            </p>
+        </header>
+
+    
+        <!-- CARDS DE RESUMO -->
+        <section class="summary-grid">
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-blue">🎯</div>
+                <h2>Taxa Média de Adesão Vacinal (2022)</h2>
+                <p class="summary-number">75,17%</p>
+                <p class="summary-meta">Meta: 95%</p>
+                <p class="summary-trend summary-trend-up">
+                    ▲ +10,66% vs. ano anterior
+                </p>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-yellow">⚠</div>
+                <h2>Vacinas com Baixa Cobertura (2022)</h2>
+                <p class="summary-number">9</p>
+                <p class="summary-meta">de 11 totais analisadas (1 nda)</p>
+                <p class="summary-trend summary-trend-down">
+                    ▼ -1 vacina vs. ano anterior
+                </p>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-red">!</div>
+                <h2>Regiões em Risco de Surto</h2>
+                <p class="summary-number">2</p>
+                <p class="summary-meta">Norte e sudeste</p>
+                <p class="summary-meta">(Nordeste bem próximo)</p>
+                <p class="summary-trend summary-trend-up">
+                    ▲ -2 regiões vs. ano anterior
+                </p>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon summary-icon-green">◎</div>
+                <h2>Meta</h2>
+                <p class="summary-number">95%</p>
+                <p class="summary-meta">De cobertura vacinal</p>
+                <p class="summary-trend">
+                    Baixo Risco (>85%)
+                    Médio Risco (75-85%)
+                    Alto Risco (70-75%)
+                    Risco Crítico abaixo de 75%
+                </p>
+            </article>
+        </section>
+
+        <!-- BLOCO DO DASHBOARD / POWER BI -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Mapa de Vulnerabilidade Vacinal</h2>
+                    <p class="dashboard-subtitle">
+                        Explore a evolução da cobertura vacinal brasileira por ano, região e tipo de vacina
+                    </p>
+                </div>
+                <div class="dashboard-status">
+                    <span class="status-dot"></span>
+                    os filtros e navegação entre as abas são feitos diretamente no Power BI
+                </div>
+            </div>
+
+            <div class="dashboard-frame-wrapper">
+                <div class="dashboard-frame-inner">
+                    <iframe
+                        title="Dashboard Cobertura Vacinal"
+                        src="{{ powerbi_url }}"
+                        frameborder="0"
+                        allowfullscreen="true">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE ANÁLISES -->
+        <section id="analises" class="analysis-section">
+            <h2>Nossas Análises</h2>
+            <p class="analysis-intro">
+                Esta seção resume os principais achados do painel, servindo como apoio para
+                tomada de decisão e planejamento de ações de imunização.
+            </p>
+
+            <div class="analysis-grid">
+                <article class="analysis-card">
+                    <h3>1. Visão Geral da Cobertura</h3>
+                    <p>
+                        A cobertura vacinal média nacional permanece abaixo da meta de 95%,
+                        com desempenho melhor nas regiões Sul e Sudeste. Observa-se uma queda
+                        gradual a partir de 2015, com maior impacto em vacinas de múltiplas doses.
+                    </p>
+                </article>
+
+                <article class="analysis-card">
+                    <h3>2. Diferenças Regionais</h3>
+                    <p>
+                        Norte e Nordeste concentram a maior parte das áreas classificadas como
+                        vulneráveis. Nessas regiões, os gráficos do painel apontam maior variação
+                        entre vacinas básicas (BCG, Hepatite B, Polio) e de reforço, o que sugere
+                        dificuldades de retorno para doses subsequentes.
+                    </p>
+                </article>
+
+                <article class="analysis-card">
+                    <h3>3. Vacinas com Maior Risco</h3>
+                    <p>
+                        As menores coberturas foram observadas em Tríplice Viral D2 e Febre Amarela,
+                        aumentando o risco de reintrodução de doenças já controladas. Essas vacinas
+                        devem ser priorizadas em campanhas de busca ativa e estratégias de comunicação.
+                    </p>
+                </article>
+
+                <article class="analysis-card">
+                    <h3>4. Recomendações Iniciais</h3>
+                    <p>
+                        Focar esforços em: comunicação segmentada para responsáveis por crianças,
+                        ampliação de horários de funcionamento das salas de vacina em regiões críticas
+                        e integração com equipes de Atenção Básica para reforçar o acompanhamento das
+                        carteiras atrasadas.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span>Painel desenvolvido para fins acadêmicos.</span>
+            <span></span>
+        </footer>
+
+    </div>
+</body>
+</html>
