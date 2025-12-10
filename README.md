@@ -11,7 +11,7 @@ Fonte dos dados: PNI – Programa Nacional de Imunizações (DATASUS). Abrange t
 
 [![Assista o ScreenCast]](https://drive.google.com/file/d/1a8gabE4BqWC0joUexUqSUbL_NOfELFbV/view?usp=drive_link)
 
-Equipe:
+Equipe:  
 Beatriz Pereira  
 Hugo Alcântara  
 Manuela Amorim  
